@@ -1,26 +1,10 @@
 @extends('layouts.sidebar')
 
 @section('styles')
-    <link rel="stylesheet" href="{{asset('assets/plugins/datatables/datatables.min.css')}}">
-@endsection
+ @endsection
 
 @section('content')
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-
-            <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3 class="page-title">Sub-Agent Transaction</h3>
-                        
-                    </div>
-
-                    <ul class="breadcrumb">
-                                    <li class=""><a href="{{url('dashboard')}}">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Transactions</li>
-                                </ul>
-                    <div class="row">
-                        <div class="col-xl-4 col-sm-6 col-12">
+    
                             <div class="card">
                                 <div class="card-body">
                                     <div class="dash-widget-header">
@@ -140,23 +124,9 @@
 
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                            </div> 
 @endsection
 
 @section('scripts')
-    <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/moment/moment.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/datatables.min.js')}}"></script>
-
-    <script src="{{asset('assets/js/script.js')}}"></script>
+    
 @endsection

@@ -1,27 +1,9 @@
 @extends('admin/layout.sidebar')
 @section('content')
-<div class="page-wrapper">
-    <div class="content container-fluid">
-
-        <div class="page-header">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h3 class="page-title">All Agents</h3>
-                    <ul class="breadcrumb">
-                        <li ><a href="{{url('admin/dashboard')}}">Dashboard</a></li>
-                        {{--                        <li class="breadcrumb-item active">Pos Management</li>--}}
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="card-body">
+         <div class="card-body">
             <form class="form" id="filter_form" method="get">
-                <div class="row">
-                   
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="card card-table">
+                    
+                             <div class="card card-table">
                                 <div class="card-body">
                                     <div class="table-responsive">
                                     <table class="table table-center table-hover datatable">
@@ -87,23 +69,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+             </form>
+        </div> 
 @endsection
 
 
 @section('scripts')
-    <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/moment/moment.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/datatables.min.js')}}"></script>
-
-    <script src="{{asset('assets/js/script.js')}}"></script>
+    
 @endsection
 

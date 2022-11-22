@@ -1,68 +1,17 @@
 @extends('admin/layout.sidebar')
 @section('content')
-    <div class="page-wrapper">
-        <div class="content container-fluid">
+    
+             
+<div class="row">
 
-            <div class="page-header">
-                <div class="row align-items-center">
-                
-                    <div class="col">
-                        <h3 class="page-title">Master Agents</h3>
-                        <ul class="breadcrumb">
-                            <li ><a href="{{url('admin/dashboard')}}">Dashboard</a></li>
-                            {{--                        <li class="breadcrumb-item active">Pos Management</li>--}}
-                        </ul>
-                    </div>
-            </div>
-
-            <div class="card-body">
-                <form class="form" id="filter_form" method="get">
-                    <div class="row">
-                        <!-- search -->
-
-{{--                        <div class="card">--}}
-{{--                            <div class="card-body">--}}
-{{--                                <form method="POST">--}}
-{{--                                    <label class="text-success">From: </label> <input type="date" class="text-success"  name="from">--}}
-{{--                                    <label class="text-success" >To: </label> <input type="date" class="text-success" name="to">--}}
-{{--                                    <input type="submit" class="text-success" value="Filter" name="submit">--}}
-{{--                                </form>--}}
-{{--                            </div>--}}
-                            <div class="row">
-
-                            @if (session('status'))
-                                    <div class="card-body">
-                                        <div class="mb-4 font-medium text-sm text-green-600 alert-dismissible alert">
-                                            {{ session('status') }}
-                                        </div>
-                                    </div>
-                                    @endif
-
-                                    @if (session('error'))
-                                    <div class="card-body">
-                                        <div class="mb-4 font-medium text-sm alert-danger alert-dismissible alert">
-                                            {{ session('error') }}
-                                        </div>
-                                    </div>
-                                    @endif
-
-                                    @if (session('success'))
-                                    <div class="card-body">
-                                        <div class="mb-4 font-medium text-sm alert-success alert-dismissible alert">
-                                            {{ session('success') }}
-                                        </div>
-                                    </div>
-                                    @endif
-                                    <br>
-
-                                <div class="col-sm-12">
-
-                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">
+                               
+                                    <div class="card card-table">
+                                        <div class="card-body">
+                                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                                 Assign Terminal
                                 </button>
 
-                                    <div class="card card-table">
-                                        <div class="card-body">
+
                                             <div class="table-responsive">
                                                 <table class="table table-center table-hover datatable">
                                                     <thead class="thead-light">
@@ -100,10 +49,7 @@
                             </div>
                         </div>
                 </form>
-            </div>
-        </div>
-    </div>
-
+            </div> 
 
 <!-- The Modal -->
 <div class="modal" id="myModal">
@@ -113,7 +59,7 @@
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Add Terminal To Agent</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
       </div>
     <form method="post" action="{{route('admin.assignterminal')}}">
     {{ csrf_field() }}
@@ -149,18 +95,6 @@
 </div>
 @endsection
 @section('scripts')
-    <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/moment/moment.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/datatables.min.js')}}"></script>
-
-    <script src="{{asset('assets/js/script.js')}}"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+   
 @endsection
 

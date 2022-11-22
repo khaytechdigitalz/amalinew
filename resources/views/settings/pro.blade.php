@@ -1,31 +1,13 @@
 @extends('layouts.sidebar')
 
 @section('content')
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-            <div class="row justify-content-lg-center">
-                <div class="col-lg-10">
 
-                    <div class="page-header">
-                        <div class="row">
-                            <div class="col">
-                                <h3 class="page-title">Profile</h3>
-                                <ul class="breadcrumb">
-                                    {{--                                <li class=""><a href="{{url('dashboard')}}">Dashboard</a></li>--}}
-                                    {{--                                <li class="breadcrumb-item active">Profile</li>--}}
-                            </ul>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-9 col-md-8">
-                            @include('error_success_message')
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="card-title">Basic information</h5>
-                                </div>
-                                <div class="card-body">
+<div class="card">
+<div class="card-body">
+<div class="profile-set"> 
 
+
+ 
                                     <form method="POST" action="{{route('update-profile')}}">
                                         @csrf
                                         {{--                                    <div class="row form-group">--}}

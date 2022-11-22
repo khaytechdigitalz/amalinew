@@ -1,47 +1,36 @@
 @extends("admin.layout.sidebar")
 @section('content')
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-            <div class="row">
-                
-                <div class="col-xl-6 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dash-widget-header">
-<span class="dash-widget-icon bg-3">
-<i class="fas fa-lock"></i>
-</span>
-                                <div class="dash-count">
-                                    <div class="dash-title">Total Verified<b> ( {{$verified}} )</b></div>
-                                     
-                                </div>
-                                <br>
-                                <a href="{{route('admin.kycs.successful')}}" class="btn btn-primary btn-sm"> View</a>
-                            </div> 
-                           
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dash-widget-header">
-<span class="dash-widget-icon bg-1">
-<i class="fas fa-unlock"></i>
-</span>
-                                <div class="dash-count">
-                                    <div class="dash-title">Total Unverifed<b> ( {{$unverified}} )</b></div>
-                                </div><br>
-                                <a href="{{route('admin.kycs.rejected')}}" class="btn btn-primary btn-sm">View </a>
-                            </div> 
-                           
-                        </div>
-                    </div>
-                </div>
-                 
-            </div>
-             
 
+
+<div class="row">
+
+<div class="col-lg-6 col-sm-6 col-12 d-flex">
+<div class="dash-count das1">
+<div class="dash-counts">
+<h4>{{$verified}} </h4>
+<h5>Total Verified</h5>
+<a href="{{route('admin.kycs.successful')}}" class="btn btn-primary btn-sm"> View</a>
+
+</div>
+<div class="dash-imgs">
+<i data-feather="user-check"></i>
+</div>
+</div>
+</div>
+<div class="col-lg-6 col-sm-6 col-12 d-flex">
+<div class="dash-count das3">
+<div class="dash-counts">
+<h4>{{$unverified}}</h4>
+<h5>Total Unverified</h5>
+<a href="{{route('admin.kycs.rejected')}}" class="btn btn-primary btn-sm">View </a>
+
+</div>
+<div class="dash-imgs">
+<i data-feather="user-x"></i>
+</div>
+</div>
+</div> 
+     
 
 
             <div class="card-body">
@@ -85,9 +74,9 @@
                                             </td>  
                                             <td>
                                                @if($data->status == 1)
-                                                    <span class="badge badge-primary"> Verified </span>
+                                                    <badge class="badge bg-primary"> Verified </badge>
                                                 @else
-                                                    <span class="badge badge-danger"> Pending </span>
+                                                    <badge class="badge bg-danger"> Pending </badge>
                                                 @endif
                                             </td>
                                             <td>
@@ -118,17 +107,4 @@
 @endsection
 
 @section('scripts')
-    <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/moment/moment.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/datatables.min.js')}}"></script>
-
-    <script src="{{asset('assets/js/script.js')}}"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-@endsection
+    @endsection

@@ -1,24 +1,12 @@
 @extends('admin/layout.sidebar')
 
 @section('content')
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-            <div class="row justify-content-lg-center">
-                <div class="col-lg-10">
-        
-                    
-                    </div>
+    
                     <div class="row">
-                        <div class="col-md-12">
-
-                        <div class="col-12">
-                                <h3 class="page-title">Create Agent</h3>
-                                <ul class="breadcrumb">
-                                    <li class=""><a href="{{url('dashboard')}}">Dashboard</a></li>
-                                    {{--                                <li class="breadcrumb-item active">Profile</li>--}}
-                                </ul>
-                            </div>
-                            <div class="card">
+ 
+                                
+                             <div class="card">
+                             <div class="col-12">
 
                             
                                 <div class="card-body">
@@ -95,23 +83,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
+                </div> 
 @endsection
 
 @section('scripts')
-    <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/moment/moment.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/datatables.min.js')}}"></script>
-
-    <script src="{{asset('assets/js/script.js')}}"></script>
-    <script src="{{asset('assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+   
 @endsection
 

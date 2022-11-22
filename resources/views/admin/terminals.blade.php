@@ -1,62 +1,44 @@
 @extends("admin.layout.sidebar")
 @section('content')
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-            <div class="row">
-                <div class="col-xl-4 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dash-widget-header">
-<span class="dash-widget-icon bg-3">
-<i class="fas fa-calculator"></i>
-</span>
-                                <div class="dash-count">
-                                    <div class="dash-title">Total Terminals <b> ( {{$total}} )</b></div>
-                                    <a href="{{url('admin/posmanagement')}}" class="btn btn-sm btn-primary">View
-                                        Terminal</a>
 
-                                </div>
-                            </div>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dash-widget-header">
-<span class="dash-widget-icon bg-2">
-<i class="fas fa-calculator"></i>
-</span>
-                                <div class="dash-count">
-                                    <div class="dash-title">Total Assigned<b> ( {{$assigned}} )</b></div>
-                                    <a href="{{url('admin/assigned-terminal')}}" class="btn btn-sm btn-primary">View
-                                        Terminal</a>
-                                </div>
-                            </div>
+<div class="row">
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dash-widget-header">
-<span class="dash-widget-icon bg-1">
-<i class="fas fa-calculator"></i>
-</span>
-                                <div class="dash-count">
-                                    <div class="dash-title">Total Unassigned<b> ( {{$unassigned}} )</b></div>
-                                    <a href="{{url('admin/unassigned-terminal')}}" class="btn btn-sm btn-primary">View
-                                        Terminal</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+<div class="col-lg-4 col-sm-6 col-12 d-flex">
+<div class="dash-count">
+<div class="dash-counts">
+<h4>{{$total}}</h4>
+<h5>Total Terminals</h5>
+</div>
+<div class="dash-imgs">
+<i data-feather="printer"></i>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-sm-6 col-12 d-flex">
+<div class="dash-count das1">
+<div class="dash-counts">
+<h4>{{$assigned}}</h4>
+<h5>Total Assigned Terminals</h5>
+</div>
+<div class="dash-imgs">
+<i data-feather="user-check"></i>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-sm-6 col-12 d-flex">
+<div class="dash-count das2">
+<div class="dash-counts">
+<h4>{{$unassigned}}</h4>
+<h5>Unassigned Terminals</h5>
+</div>
+<div class="dash-imgs">
+<i data-feather="file-text"></i>
+</div>
+</div>
+</div>
+ 
+              
 
 
             <div class="card-body">
@@ -66,7 +48,7 @@
                     <div class="row">
                         <div class="col-sm-12">
 
-                            <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-primary">Create
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-sm btn-primary">Create
                                 New Terminal</a>
 
                             <br>
@@ -99,7 +81,7 @@
 
                                             <!-- Modal footer -->
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
                                                     Close
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">Create</button>
@@ -216,17 +198,5 @@
 @endsection
 
 @section('scripts')
-    <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
 
-    <script src="{{asset('assets/plugins/moment/moment.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/datatables.min.js')}}"></script>
-
-    <script src="{{asset('assets/js/script.js')}}"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 @endsection

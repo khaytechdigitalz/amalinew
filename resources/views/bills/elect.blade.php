@@ -1,27 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('content')
-
-<div class="page-wrapper">
-    <div class="content container-fluid">
-        <div class="row justify-content-lg-center">
-            <div class="col-lg-12">
-
-                <div class="page-header">
-                    <div class="row">
-                        <div class="col">
-                            <h3 class="page-title">Electricity</h3>
-                            
-                        </div>
-                    </div>
-                </div>
-
-
-                <ul class="breadcrumb">
-                                    <li class=""><a href="{{url('dashboard')}}">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Electricity</li>
-                                </ul>
-
+ 
 <div class="card">
                 <div class="card-body">
                     <!--                    <div class="box w3-card-4">-->
@@ -80,21 +60,10 @@
                     </div>
                 </div>
 </div>
-            </div>
-        </div>
-    </div>
-</div>
+            
 
 @endsection
 
 @section('scripts')
-    <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
 
-    <script src="{{asset('assets/plugins/moment/moment.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/datatables.min.js')}}"></script>
-
-    <script src="{{asset('assets/js/script.js')}}"></script>
 @endsection

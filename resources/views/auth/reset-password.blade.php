@@ -1,36 +1,81 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.auth')
 
-        <x-jet-validation-errors class="mb-4" />
+@section('contents') 
 
-        <form method="POST" action="{{ route('password.update') }}">
+<div class="main-wrapper">
+<div class="account-content">
+<div class="login-wrapper">
+<div class="login-content">
+<div class="login-userset">
+<div class="login-logo">
+<img src="{{asset('assets/img/lg.png')}}" alt="img">
+</div>
+<div class="login-userheading">
+<h3>Reset Password</h3>
+<h4> 
+You have requested to reset password to accunt {{old('email', $request->email)}}       
+</h4>
+</div>
+<x-jet-validation-errors class="mb-4 alert-danger alert-dismissible alert"/>
+
+
+@if (session('status'))
+    <div class="mb-4 font-medium text-sm text-green-600 alert-dismissible alert">
+        {{ session('status') }}
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="mb-4 font-medium text-sm alert-danger alert-dismissible alert">
+        {{ session('error') }}
+    </div>
+@endif
+
+@if (session('success'))
+    <div class="mb-4 font-medium text-sm alert-success alert-dismissible alert">
+        {{ session('success') }}
+    </div>
+@endif
+<form method="POST" action="{{ route('password.update') }}">
             @csrf
 
             <input type="hidden" name="token" value="{{ $request->route('token') }}">
+            <input type="email" name="email" id="email" class="form-control pass-input" value="{{old('email', $request->email)}}" hidden required autofocus/> 
 
-            <div class="block">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
-            </div>
+<div class="form-login">
+<label>New Password</label>
+<div class="pass-group">
+<input type="password" name="password" class="form-control pass-input" required/>
+<span class="fas toggle-password fa-eye-slash"></span>
+</div>
+</div>
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
 
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-jet-button>
-                    {{ __('Reset Password') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+<div class="form-login">
+<label>Confirm New Password</label>
+<div class="pass-group">
+<input type="password" name="password_confirmation" class="form-control pass-input" required/>
+<span class="fas toggle-password fa-eye-slash"></span>
+</div>
+</div>
+<div class="form-login">
+<button class="btn btn-login" type="submit">Reset Password</button>
+</div>
+</form>
+<div class="signinform text-center">
+<h4>Have an account? <a href="{{route('login')}}" class="hover-a">Login</a></h4>
+</div>  
+</div>
+</div>
+<div class="login-img">
+<img src="{{asset('components/img/login.jpg')}}" alt="img">
+</div>
+</div>
+</div>
+</div>
+
+  
+@endsection
+
+ 

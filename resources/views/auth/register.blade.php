@@ -1,19 +1,40 @@
 @extends('layouts.auth')
 
 @section('contents')
-    <main class="my-5">
 
-        <x-jet-validation-errors class="mb-4 alert-danger alert-dismissible alert"/>
+<div class="main-wrapper">
+<div class="account-content">
+<div class="login-wrapper">
+<div class="login-content">
+<div class="login-userset">
+<div class="login-logo">
+<img src="{{asset('assets/img/lg.png')}}" alt="img">
+</div>
+<div class="login-userheading">
+<h3>Register</h3>
+<h4>Please fill the form below to create a new account</h4>
+</div>
+<x-jet-validation-errors class="mb-4 alert-danger alert-dismissible alert"/>
 
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
+@if (session('status'))
+    <div class="mb-4 font-medium text-sm text-green-600 alert-dismissible alert">
+        {{ session('status') }}
+    </div>
+@endif
 
-        <div class="container">
-            <form method="POST" action="{{ route('register') }}" id="myForm" enctype="multipart/form-data">
+@if (session('error'))
+    <div class="mb-4 font-medium text-sm alert-danger alert-dismissible alert">
+        {{ session('error') }}
+    </div>
+@endif
+
+@if (session('success'))
+    <div class="mb-4 font-medium text-sm alert-success alert-dismissible alert">
+        {{ session('success') }}
+    </div>
+@endif
+<form method="POST" action="{{ route('register') }}" id="myForm" enctype="multipart/form-data">
                 @csrf
                 <div id="wizard">
                     <h3>
@@ -21,14 +42,12 @@
                             <div class="bd-wizard-step-icon"><i class="mdi mdi-account-outline"></i></div>
                             <div class="media-body">
                                 <div class="bd-wizard-step-title">Personal Details</div>
-                                <div class="bd-wizard-step-subtitle">Step 1</div>
-                            </div>
+                             </div>
                         </div>
                     </h3>
                     <section>
                         <div class="content-wrapper">
-                            <h4 class="section-heading">Enter your Personal details </h4>
-                            <div class="row">
+                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="firstName" >First Name</label>
                                     <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First Name" required>
@@ -50,17 +69,19 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label for="gender">Gender</label>  <br />
+                                    <label for="gender">Gender</label>  
                                     <select name="gender" id="gender" class="form-control-lg" required style="width: 100%">
                                         <option selected>Male</option>
                                         <option>Female</option>
                                     </select>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="agent" >Agent-type</label>  <br />
+                                <div class="form-group col-md-6">
+                                    <label for="agent" >Agent-type</label>  
                                     <select id="agent" name="ag" class="form-control-lg" required style="width: 100%">
                                         <option value="agent" selected> Agent </option>
-                                        {{--                                            <option value="sub_agent"> Sub Agent </option>--}}
+                                        {{--
+                                        <option value="sub_agent"> Sub Agent </option>
+                                        --}}
                                     </select>
                                 </div>
                             </div>
@@ -78,14 +99,12 @@
                             <div class="bd-wizard-step-icon"><i class="mdi mdi-bank"></i></div>
                             <div class="media-body">
                                 <div class="bd-wizard-step-title">BUSINESS INFORMATION</div>
-                                <div class="bd-wizard-step-subtitle">Step 2</div>
-                            </div>
+                             </div>
                         </div>
                     </h3>
                     <section>
                         <div class="content-wrapper">
-                            <h4 class="section-heading">Enter your BUSINESS INFORMATION</h4>
-                            <div class="row">
+                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="businessName" >Business Name</label>
                                     <input type="text" name="businessName" id="businessName" class="form-control" placeholder="Business Name">
@@ -117,7 +136,7 @@
 
                                 <div class="form-group col-md-6">
 
-                                    <label for="state">State</label> <br />
+                                    <label for="state">State</label> 
                                     <select name="state" id="state" class="form-control-lg" style="width: 100%" >
                                         <option value="" selected="" disabled="">--Select state--</option>
                                         <option value="1">Abia</option>
@@ -168,14 +187,12 @@
                             <div class="bd-wizard-step-icon"><i class="mdi mdi-account-check-outline"></i></div>
                             <div class="media-body">
                                 <div class="bd-wizard-step-title">ACCOUNT INFORMATION</div>
-                                <div class="bd-wizard-step-subtitle">Step 3</div>
-                            </div>
+                             </div>
                         </div>
                     </h3>
                     <section>
                         <div class="content-wrapper">
-                            <h4 class="section-heading mb-5">ACCOUNT INFORMATION</h4>
-                            <div class="row">
+                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="accountNumber" >Account Number</label>
                                     <input type="number" name="accountNumber"  class="form-control" placeholder="Account Number" required>
@@ -549,39 +566,41 @@
                             <div class="bd-wizard-step-icon"><i class="mdi mdi-emoticon-outline"></i></div>
                             <div class="media-body">
                                 <div class="bd-wizard-step-title">DOCUMENT UPLOAD</div>
-                                <div class="bd-wizard-step-subtitle">Step 4</div>
-                            </div>
+                             </div>
                         </div>
                     </h3>
                     <section>
                         <div class="content-wrapper">
-                            <div class="row p-4 rounded g-3">
-                                <h6><strong>DOCUMENT UPLOAD</strong></h6>
-                                <hr>
-                                <div class="col-sm-5">
+                            <div class="row">
+                                 <hr>
+                                 <div class="form-group col-md-6">
                                     <div class="form-group">
                                         <label for="file-1"><span>Utility Bill</span></label>
                                         <input type="file" name="utilityBill" id="file-1" class="form-control" required>
                                     </div>
                                 </div>
-                                <div class="col-sm-5">
+                                <div class="form-group col-md-6">
                                     <div class="form-group">
                                         <label for="file-2"><span>Guarantor Form</span></label>
                                         <input type="file" name="guarantorForm" id="file-2" class="form-control" required>
                                     </div>
                                 </div>
 
-                                <div class="col-sm-5">
+                                <div class="form-group col-md-6">
                                     <div class="form-group">
                                         <label for="file-3"><span>ID card</span></label>
                                         <input type="file" name="idCard" id="file-3" class="form-control" required>
                                     </div>
                                 </div>
-                                <div class="col-sm-5">
+                                <div class="form-group col-md-6">
                                     <div class="form-group">
                                         <label for="file-4"><span>Passport Photograph</span></label>
                                         <input type="file" name="passportPhotograph" id="file-4" class="form-control" required="">
                                     </div>
+                                </div>
+
+                                <div class="form-login">
+                                <button class="btn btn-login" type="submit">Create Account</button>
                                 </div>
                                 <!-- End Document Upload -->
                             </div>
@@ -589,6 +608,18 @@
                     </section>
                 </div>
             </form>
-        </div>
-    </main>
+<div class="signinform text-center">
+<h4>Have an account? <a href="{{route('login')}}" class="hover-a">Login</a></h4>
+</div>
+ 
+</div>
+</div>
+<div class="login-img">
+<img src="{{asset('components/img/reg.jpg')}}" alt="img">
+</div>
+</div>
+</div>
+</div>
+
+ 
 @endsection

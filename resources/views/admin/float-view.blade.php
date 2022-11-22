@@ -5,54 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-
-             
-<div class="content-wrapper">
-
-<section class="content-header">
-<div class="container-fluid">
-<div class="row mb-2">
-
-
-
-<div class="col-sm-6">
-<h3>View Loan</h3>
-</div>
  
-</div>
-</div>
-</section>
-
-<section class="content">
-<div class="container-fluid">
-<div class="row">
-
-                                    @if (session('status'))
-                                    <div class="card-body">
-                                        <div class="mb-4 font-medium text-sm text-green-600 alert-dismissible alert">
-                                            {{ session('status') }}
-                                        </div>
-                                    </div>
-                                    @endif
-
-                                    @if (session('error'))
-                                    <div class="card-body">
-                                        <div class="mb-4 font-medium text-sm alert-danger alert-dismissible alert">
-                                            {{ session('error') }}
-                                        </div>
-                                    </div>
-                                    @endif
-
-                                    @if (session('success'))
-                                    <div class="card-body">
-                                        <div class="mb-4 font-medium text-sm alert-success alert-dismissible alert">
-                                            {{ session('success') }}
-                                        </div>
-                                    </div>
-                                    @endif
-                                    <br>
 <div class="col-md-12">
 
 <div class="card card-primary card-outline">
@@ -224,13 +177,5 @@ Status <badge class="badge bg-success">Closed</badge>
 @endsection
 
 @section('scripts')
-    <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/moment/moment.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/datatables.min.js')}}"></script>
-
-    <script src="{{asset('assets/js/script.js')}}"></script>
+   
 @endsection

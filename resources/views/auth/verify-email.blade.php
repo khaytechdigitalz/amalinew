@@ -1,37 +1,81 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.auth')
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
-        </div>
+@section('contents') 
 
-        @if (session('status') == 'verification-link-sent')
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
-            </div>
-        @endif
+<div class="main-wrapper">
+<div class="account-content">
+<div class="login-wrapper">
+<div class="login-content">
+<div class="login-userset">
+<div class="login-logo">
+<img src="{{asset('assets/img/lg.png')}}" alt="img">
+</div>
+<div class="login-userheading">
+<h3>Comfirm Email</h3>
+<h4> 
+{{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+</h4>
+</div>
+<x-jet-validation-errors class="mb-4 alert-danger alert-dismissible alert"/>
 
-        <div class="mt-4 flex items-center justify-between">
-            <form method="POST" action="{{ route('verification.send') }}">
+
+@if (session('status'))
+    <div class="mb-4 font-medium text-sm text-green-600 alert-dismissible alert">
+        {{ session('status') }}
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="mb-4 font-medium text-sm alert-danger alert-dismissible alert">
+        {{ session('error') }}
+    </div>
+@endif
+
+@if (session('success'))
+    <div class="mb-4 font-medium text-sm alert-success alert-dismissible alert">
+        {{ session('success') }}
+    </div>
+@endif <form method="POST" action="{{ route('verification.send') }}">
                 @csrf
 
-                <div>
-                    <x-jet-button type="submit">
+ 
+<div class="form-login">
+<label>Code</label>
+<div class="pass-group">
+<input type="password" name="password" class="form-control pass-input" required/>
+<span class="fas toggle-password fa-eye-slash"></span>
+</div>
+</div>
+ 
+<div class="form-login">
+<button class="btn btn-login" type="submit">Confirm Email</button>
+</div>
+</form>
+<x-jet-button type="submit">
                         {{ __('Resend Verification Email') }}
                     </x-jet-button>
-                </div>
-            </form>
-
-            <form method="POST" action="{{ route('logout') }}">
+<div class="signinform text-center">
+<form method="POST" action="{{ route('logout') }}">
                 @csrf
 
                 <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
                     {{ __('Log Out') }}
                 </button>
-            </form>
-        </div>
-    </x-jet-authentication-card>
-</x-guest-layout>
+            </form></div>  
+</div>
+</div>
+<div class="login-img">
+<img src="{{asset('components/img/reg.jpg')}}" alt="img">
+</div>
+</div>
+</div>
+</div>
+
+  
+@endsection
+
+ 
+
+
+
+ 

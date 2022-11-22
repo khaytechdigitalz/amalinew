@@ -1,23 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('content')
-<div class="page-wrapper">
-    <div class="content container-fluid">
-
-        <div class="page-header">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h3 class="page-title">Pos Management</h3>
-                     
-                </div>
-            </div>
-        </div>
-
-        <ul class="breadcrumb">
-                                    <li class=""><a href="{{url('dashboard')}}">Dashboard</a></li>
-                                    <li class="breadcrumb-item active"> Terminals</li>
-                                </ul>
-
+ 
 
         <div id="filter_inputs" class="card filter-card">
             <div class="card-body pb-0">
@@ -71,19 +55,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+        </div> 
 @endsection
 
-@section('scripts')
-    <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/moment/moment.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/datatables.min.js')}}"></script>
-
-    <script src="{{asset('assets/js/script.js')}}"></script>
+@section('scripts') 
 @endsection

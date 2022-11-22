@@ -1,24 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('content')
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-            <div class="row justify-content-lg-center">
-                <div class="col-lg-10">
-
-                    <div class="page-header">
-                        <div class="row">
-                            <div class="col">
-                                <h3 class="page-title">Money Transfer</h3>
-                                <ul class="breadcrumb">
-                                    <li class=""><a href="{{url('walletHistory')}}">Wallet</a></li>
-                                    {{--                                <li class="breadcrumb-item active">Profile</li>--}}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
+   
                             <div class="card">
                                 <div class="card-body">
                                     {{--                                <h4 class="card-title">Basic Info</h4>--}}
@@ -74,7 +57,7 @@ verifybill.php?number="+str+"+&networkcode="+k,true);--}}
                                                     <div class="">
                                                         <select name="bankcode" id="value" class="text-success  form-control" required="" >
                                                             @foreach($rep1 as $plan)
-{{--                                                            <option selected="">---------</option>--}}
+{{--                                                        <option selected=""> --------- </option>
                                                             <option value="{{$plan['code']}}">{{$plan['name']}}</option>
                                                             @endforeach
 

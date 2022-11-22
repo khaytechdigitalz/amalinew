@@ -1,222 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from kanakku.dreamguystech.com/html/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 Nov 2021 18:06:17 GMT -->
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Amali</title>
 
-    <link rel="shortcut icon" href="{{asset('assets/img/lg.png')}}">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+<meta name="description" content="AMALI - Payment Channel">
+<meta name="keywords" content="pos, estterminals">
+<meta name="author" content="Inclusive Village - Globa Technology">
+<meta name="robots" content="noindex, nofollow"> 
 
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
+<title>AMALI AGENT</title>
 
-    <link rel="stylesheet" href="{{asset('assets/plugins/fontawesome/css/fontawesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/plugins/fontawesome/css/all.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/plugins/datatables/datatables.min.css')}}">
+<link rel="shortcut icon" href="{{asset('assets/img/lg.png')}}">
 
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-<!--[if lt IE 9]>
-    <script src="{{asset('assets/js/html5shiv.min.js')}}"></script>
-    <script src="{{asset('assets/js/respond.min.js')}}"></script>
-    <![endif]-->
+<link rel="stylesheet" href="{{asset('components/css/bootstrap.min.css')}}">
 
-    @yield('styles')
-    @stack('styles')
+<link rel="stylesheet" href="{{asset('components/css/animate.css')}}">
+
+<link rel="stylesheet" href="{{asset('components/css/dataTables.bootstrap4.min.css')}}">
+
+<link rel="stylesheet" href="{{asset('components/plugins/fontawesome/css/fontawesome.min.css')}}">
+<link rel="stylesheet" href="{{asset('components/plugins/fontawesome/css/all.min.css')}}">
+ 
+<link rel="stylesheet" href="{{asset('components/css/style.css')}}">
+<link rel="stylesheet" href="{{asset('components/plugins/owlcarousel/owl.carousel.min.css')}}">
+
+
 </head>
 <body>
+<div id="global-loader">
+<div class="whirly-loader"> </div>
+</div>
 
 <div class="main-wrapper">
 
-    <div class="header">
+<div class="header">
 
-        <div class="header-left">
-            <a href="{{url('admin/dashboard')}}" class="logo">
-                <img src="{{asset('assets/img/lg.png')}}" alt="Logo">
-            </a>
-            <a href="{{url('dashboard')}}" class="logo logo-small">
-                <img src="{{asset('assets/img/lg.png')}}" alt="Logo" width="30" height="30">
-            </a>
-        </div>
+<div class="header-left active">
+<a href="{{url('admin/dashboard')}}" class="logo">
+<img src="{{asset('assets/img/lg.png')}}" alt="">
+</a>
+<a href="{{url('admin/dashboard')}}" class="logo-small">
+<img src="{{asset('assets/img/lg.png')}}" alt="">
+</a>
+<a id="toggle_btn" href="javascript:void(0);">
+</a>
+</div>
 
-
-        <a href="javascript:void(0);" id="toggle_btn">
-            <i class="fas fa-bars"></i>
-        </a>
-
-
-        <div class="top-nav-search">
-            <form>
-                <input type="text" class="form-control" placeholder="Search here">
-                <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-            </form>
-        </div>
-
-
-        <a class="mobile_btn" id="mobile_btn">
-            <i class="fas fa-bars"></i>
-        </a>
-
-
-        <ul class="nav nav-tabs user-menu">
-            <li class="nav-item dropdown">
-                <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                    <i data-feather="bell"></i> <span class="badge rounded-pill">5</span>
-                </a>
-                <div class="dropdown-menu notifications">
-                    <div class="topnav-dropdown-header">
-                        <span class="notification-title">Notifications</span>
-                        <a href="javascript:void(0)" class="clear-noti"> Clear All</a>
-                    </div>
-                </div>
-
-
-            <li class="nav-item dropdown has-arrow main-drop">
-                <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-<span class="user-img">
-<img src="{{asset('assets/img/profiles/avatar-01.jpg')}}" alt="">
-<span class="status online"></span>
+<a id="mobile_btn" class="mobile_btn" href="{{url('dashboard')}}#sidebar">
+<span class="bar-icon">
+<span></span>
+<span></span>
+<span></span>
 </span>
-                    <span>Admin</span>
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{route('profile')}}"><i data-feather="user" class="me-1"></i>
-                        Profile</a>
-                    <a class="dropdown-item" href="{{route('settings')}}"><i data-feather="settings" class="me-1"></i>
-                        Settings</a>
-                    <a class="dropdown-item" href="{{url('logout')}}"><i data-feather="log-out" class="me-1"></i> Logout</a>
-                </div>
-            </li>
+</a>
 
-        </ul>
+<ul class="nav user-menu">
 
-    </div>
+<li class="nav-item">
+<div class="top-nav-search">
+<a href="javascript:void(0);" class="responsive-search">
+<i class="fa fa-search"></i>
+</a>
+<form action="#">
+<div class="searchinputs">
+<input type="text" placeholder="Search Here ...">
+<div class="search-addon">
+<span><img src="{{asset('components/img/icons/closes.svg')}}" alt="img"></span>
+</div>
+</div>
+<a class="btn" id="searchdiv"><img src="{{asset('components/img/icons/search.svg')}}" alt="img"></a>
+</form>
+</div>
+</li>
+
+ 
+
+ 
+<li class="nav-item dropdown has-arrow main-drop">
+<a href="javascript:void(0);" class="dropdown-toggle nav-link userset" data-bs-toggle="dropdown">
+<span class="user-img"><img src="{{asset('components/img/profiles/owner.png')}}" alt="">
+<span class="status online"></span></span>
+</a>
+<div class="dropdown-menu menu-drop-user">
+<div class="profilename">
+<div class="profileset">
+<span class="user-img"><img src="{{asset('components/img/profiles/owner.png')}}" alt="">
+<span class="status online"></span></span>
+<div class="profilesets">
+<h6>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h6>
+<h5>{{Auth::user()->phone}}</h5>
+</div>
+</div>
+<hr class="m-0">
+<a class="dropdown-item" href="{{route('profile')}}"> <i class="me-2" data-feather="user"></i> My Profile</a>
+<a class="dropdown-item" href="{{route('settings')}}"><i class="me-2" data-feather="settings"></i>Settings</a>
+<hr class="m-0">
+<a class="dropdown-item logout pb-0" href="{{route('logout')}}"><img src="{{asset('components/img/icons/log-out.svg')}}" class="me-2" alt="img">Logout</a>
+</div>
+</div>
+</li>
+</ul>
 
 
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-inner slimscroll">
-            <div id="sidebar-menu" class="sidebar-menu">
-                <ul>
-                    <li class="menu-title"><span>Main</span></li>
-
-                    <li>
-                        <a class="nav-link" href="{{url('admin/dashboard')}}" ><i data-feather="home"></i> <span>Dashboard</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{url('admin/all-agents')}}"><i data-feather="users"></i> <span>Master Agents</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{url('admin/all-sub-agents')}}"><i data-feather="users"></i> <span>All Agents</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{url('admin/createAgent')}}"><i data-feather="plus"></i> <span>Create Agent</span></a>
-                    </li>
-                    <hr>
-                    <li class="nav-link"><b>FLOAT MANAGER</b></li>
-
-                    <li>
-                        <a class="nav-link" href="{{url('admin/float-request')}}"><i data-feather="gift"></i> <span>Float Request</span></a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link" href="{{url('admin/float-active')}}"><i class="fa fa-spinner fa-spin"></i> <span>Active Loan</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{url('admin/float-due')}}"><i class="fas fa-info-circle"></i> <span>Due Loan</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{url('admin/float-closed')}}"><i class="fas fa-check-circle"></i> <span>Settled Loan</span></a>
-                    </li>
-
-                    <li>
-                        <a href="{{route('admin.floatsettings')}}"><i data-feather="percent"></i> <span>Float Settings</span></a>
-                    </li>
-                    <hr>
-                    
-                    <li>
-                        <a class="nav-link active" href="{{url('admin/posmanagement')}}"><i class="fa fa-calculator"></i><span>POS Manager</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-link active" href="{{url('admin/kycs')}}"><i class="fa fa-lock"></i>
-                        <span>KYC</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-link active" href="{{url('bill-payment')}}"><i class="fa fa-sticky-note"></i>
-                            <span>All Bills</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-link active" href="{{url('bills/airtime')}}"><i class="fa fa-network-wired"></i>
-                            <span>Buy Airtime</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{url('users')}}"><i data-feather="users"></i> <span>Users</span></a>
-                    </li>
-                    <li>
-                        <a href="{{route('profile')}}"><i data-feather="user"></i> <span>Profile</span></a>
-                    </li>
-
-                    <li>
-                        <a href="{{route('admin.fee.transfer')}}"><i class="fa fa-money-check"></i>
-                            <span>Transfer Fees</span></a>
-                    </li>
-
-                    <li>
-                        <a href="{{route('admin.fee.cashout')}}"><i class="fa fa-money-check"></i>
-                            <span>Cashout Fees</span></a>
-                    </li>
-
-                    <li>
-                        <a href="{{route('admin.fee.poswithdrawal')}}"><i class="fa fa-money-check"></i>
-                            <span>Pos Withdrawal Fees</span></a>
-                    </li>
-
-                    <li>
-                        <a href="{{route('admin.incentive.flat')}}"><i class="fa fa-money-bill-wave"></i>
-                            <span>Incentives (Flat)</span></a>
-                    </li>
-
-                    <li>
-                        <a href="{{route('admin.incentive.percent')}}"><i class="fa fa-money-bill-wave"></i>
-                            <span>Incentive (Percentage)</span></a>
-                    </li>
-
-                    <li>
-                        <a href="#"><i class="fa fa-chart-bar"></i>
-                            <span>Performance</span></a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.generalsettings')}}"><i data-feather="settings"></i> <span>General Settings</span></a>
-                    </li>
-
-                    <li>
-                        <a href="{{route('admin.paymentsettings')}}"><i data-feather="shopping-cart"></i> <span>Payment Settings</span></a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    @yield('content')
+<div class="dropdown mobile-user-menu">
+<a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+<div class="dropdown-menu dropdown-menu-right">
+<a class="dropdown-item" href="{{route('profile')}}">My Profile</a>
+<a class="dropdown-item" href="{{route('settings')}}">Settings</a>
+<a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+</div>
+</div>
 
 </div>
 
 
-<script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
+<div class="sidebar" id="sidebar">
+<div class="sidebar-inner slimscroll">
+<div id="sidebar-menu" class="sidebar-menu">
+<ul>
+ <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
+<a href="{{url('admin/dashboard')}}"><img src="{{asset('components/img/icons/dashboard.svg')}}" alt="img"><span> Dashboard</span> </a>
+</li>
 
-<script src="{{asset('assets/js/popper.min.js')}}"></script>
-<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-
-<script src="{{asset('assets/js/feather.min.js')}}"></script>
-
-<script src="{{asset('assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
-
-<script src="{{asset('assets/plugins/apexchart/apexcharts.min.js')}}"></script>
-<script src="{{asset('assets/plugins/apexchart/chart-data.js')}}"></script>
-
-{{--    <script src="{{asset('assets/js/script.js')}}"></script>--}} 
+<li class="submenu">
+<a href="javascript:void(0);"><i data-feather="users"></i><span>Agents</span> <span class="menu-arrow"></span></a>
+<ul>
+ <li class="{{ Request::is('terminals') ? 'active' : '' }}"><a href="{{url('admin/all-agents')}}">Master Agent</a></li>
+ <li class="{{ Request::is('terminals') ? 'active' : '' }}"><a href="{{url('admin/all-sub-agents')}}">All Agent</a></li>
+ <li class="{{ Request::is('add-sub-agent') ? 'active' : '' }}"><a href="{{url('admin/createAgent')}}">Create Agent</a></li>
+</ul>
+</li> 
 
 
+<li class="submenu">
+<a href="javascript:void(0);"><i data-feather="percent"></i><span>Float Manager</span> <span class="menu-arrow"></span></a>
+<ul>
+ <li class=""><a href="{{url('admin/float-request')}}">Request Foat</a></li>
+ <li class=""><a href="{{url('admin/float-active')}}">Active Float</a></li>
+ <li class=""><a href="{{url('admin/float-due')}}">Due Loan</a></li>
+ <li class=""><a href="{{url('admin/float-closed')}}">Settled Loan</a></li>
+ <li class=""><a href="{{route('admin.floatsettings')}}">Loan Settings</a></li>
+</ul>
+</li> 
+
+
+<li class="{{ Request::is('posmanagement') ? 'active' : '' }}">
+<a href="{{url('admin/posmanagement')}}"><i data-feather="printer"></i><span> POS Manager</span> </a>
+</li>
+<li class="{{ Request::is('kyc') ? 'active' : '' }}">
+<a href="{{url('admin/kycs')}}"><i data-feather="shield"></i><span> KYC Manager</span> </a>
+</li>
+ 
+<li class="{{ Request::is('bills') ? 'active' : '' }}">
+<a href="{{url('admin/bill-payment')}}"><i data-feather="rss"></i><span> Bills Payment</span> </a>
+</li>
+ 
+<li class="{{ Request::is('airtime') ? 'active' : '' }}">
+<a href="{{url('admin/bills/airtime')}}"><i data-feather="percent"></i><span> Buy Airtime</span> </a>
+</li>
+<li class="{{ Request::is('users') ? 'active' : '' }}">
+<a href="{{url('admin/users')}}"><i data-feather="user"></i><span> Users</span> </a>
+</li>
+<li class="{{ Request::is('profile') ? 'active' : '' }}">
+<a href="{{route('profile')}}"><i data-feather="settings"></i><span> Profile Settings</span> </a>
+</li>
+
+{{--
+                    <li>
+                        <a href="{{route('admin.fee.transfer')}}"><i data-feather="percent"></i>
+                            <span>Transfer Fees</span></a>
+                    </li>
+                   
+
+                    <li>
+                        <a href="{{route('admin.fee.cashout')}}"><i data-feather="percent"></i>
+                            <span>Cashout Fees</span></a>
+                    </li>
+                    
+
+                    <li>
+                        <a href="{{route('admin.fee.poswithdrawal')}}"><i data-feather="percent"></i>
+                            <span>Pos Withdrawal Fees</span></a>
+                    </li>
+                    
+
+                    <li>
+                        <a href="{{route('admin.incentive.flat')}}"><i data-feather="percent"></i>
+                            <span>Incentives (Flat)</span></a>
+                    </li>
+                    
+
+                    <li>
+                        <a href="{{route('admin.incentive.percent')}}"><i data-feather="percent"></i>
+                            <span>Incentive (Percentage)</span></a>
+                    </li>
+                    --}}
+
+                    <li class="{{ Request::is('generalsettings') ? 'active' : '' }}">
+<a href="{{route('admin.generalsettings')}}"><i data-feather="settings"></i><span> General Settings</span> </a>
+</li>
+<li class="{{ Request::is('paymentsettings') ? 'active' : '' }}">
+<a href="{{route('admin.paymentsettings')}}"><i data-feather="settings"></i><span> Payment Settings</span> </a>
+</li>
+ 
+ 
+  
+ 
+</li>
+</div>
+</div>
+</div>     
+
+<div class="page-wrapper">
+    <div class="content">
+
+<div class="page-header">
+<div class="page-title">
+<h4>Dashboard</h4>
+<h6>{{@$title}}</h6>
+</div>
+</div>
+
+        
+
+@if (session('status'))
+ <div class="card-body">
+    <div class="mb-4 font-medium text-sm text-green-600 alert-dismissible alert">
+        {{ session('status') }}
+    </div>
+</div>
+ @endif
+
+ @if (session('error'))
+    <div class="card-body">
+        <div class="mb-4 font-medium text-sm alert-danger alert-dismissible alert">
+         {{ session('error') }}
+        </div>
+    </div>
+ @endif
+
+@if (session('success'))
+    <div class="card-body">
+        <div class="mb-4 font-medium text-sm alert-success alert-dismissible alert">
+            {{ session('success') }}
+        </div>
+    </div>
+ @endif     
+    @yield('content')
+ 
+    </div>
+</div>        
+<script src="{{asset('components/js/jquery-3.6.0.min.js')}}"></script>
+
+<script src="{{asset('components/js/feather.min.js')}}"></script>
+
+<script src="{{asset('components/js/jquery.slimscroll.min.js')}}"></script>
+
+<script src="{{asset('components/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('components/js/dataTables.bootstrap4.min.js')}}"></script>
+
+<script src="{{asset('components/js/bootstrap.bundle.min.js')}}"></script>
+
+<script src="{{asset('components/plugins/apexchart/apexcharts.min.js')}}"></script>
+<script src="{{asset('components/plugins/apexchart/chart-data.js')}}"></script>
+<script src="{{asset('components/plugins/owlcarousel/owl.carousel.min.js')}}"></script>
+<script src="{{asset('components/js/script.js')}}"></script>
+ 
 @yield('scripts')
 @stack('script')
 

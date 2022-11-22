@@ -1,28 +1,10 @@
 @extends('layouts.sidebar')
 
 @section('styles')
-    <link rel="stylesheet" href="{{asset('assets/plugins/datatables/datatables.min.css')}}">
-@endsection
+ @endsection
 
 @section('content')
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-
-            <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3 class="page-title">My Float History</h3>
-                        <ul class="breadcrumb">
- 
-                        </ul>
-                    </div>
-
-                    <ul class="breadcrumb">
-                                    <li class=""><a href="{{url('dashboard')}}">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">My Float</li>
-                                </ul>
-
-                    <div class="row">
+     
                         
                          @if (session('status'))
                                     <div class="card-body">
@@ -215,21 +197,8 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    </div> 
 @endsection
 
-@section('scripts')
-    <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/moment/moment.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/datatables.min.js')}}"></script>
-
-    <script src="{{asset('assets/js/script.js')}}"></script>
+@section('scripts') 
 @endsection

@@ -2,208 +2,132 @@
 
 @section('content')
 @push('styles')
-<link rel="stylesheet" href=" https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+
 @endpush
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-            <div class="row">
 
 
-            <ul class="breadcrumb">
-                                    <li class=""><a href="{{url('dashboard')}}">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Dashboard</li>
-                                </ul>
-            @if (session('status'))
-                                    <div class="card-body">
-                                        <div class="mb-4 font-medium text-sm text-green-600 alert-dismissible alert">
-                                            {{ session('status') }}
-                                        </div>
-                                    </div>
-                                    @endif
+<div class="row">
+<div class="col-lg-12 col-sm-12 col-12">
+<div class="dash-widget">
+<div class="dash-widgetimg">
+<span><img src="{{asset('components/img/icons/dash1.svg')}}" alt="img"></span>
+</div>
+<div class="dash-widgetcontent">
+<h5>₦<span class="counters" data-counts="{{$wallet}}">{{number_format($wallet,2)}}</span></h5>
+<h6>Wallet Balance</h6>
+</div>
+</div>
+</div>
 
-                                    @if (session('error'))
-                                    <div class="card-body">
-                                        <div class="mb-4 font-medium text-sm alert-danger alert-dismissible alert">
-                                            {{ session('error') }}
-                                        </div>
-                                    </div>
-                                    @endif
-
-                                    @if (session('success'))
-                                    <div class="card-body">
-                                        <div class="mb-4 font-medium text-sm alert-success alert-dismissible alert">
-                                            {{ session('success') }}
-                                        </div>
-                                    </div>
-                                    @endif
-                                    <br>
-                  
-                <div class="col-xl-4 col-sm-6 col-12">
-
-
-
-
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dash-widget-header">
-<span class="dash-widget-icon bg-1">
-<i class="fas fa-wallet"></i>
-</span>
-                                <div class="dash-count">
-                                    <div class="dash-title">Wallet Balance</div>
-                                    <div class="dash-counts">
-                                        <p>₦{{$wallet}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                           
-                         </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dash-widget-header">
-<span class="dash-widget-icon bg-2">
-<i class="fas fa-users"></i>
-</span>
-                                <div class="dash-count">
-                                    <div class="dash-title">Total Customer</div>
-                                    <div class="dash-counts">
-                                        <p>{{$customer}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                             
-                         </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dash-widget-header">
-<span class="dash-widget-icon bg-3">
-<i class="fas fa-file-alt"></i>
-</span>
-                                <div class="dash-count">
-                                    <div class="dash-title">Transactions</div>
-                                    <div class="dash-counts">
-                                        <p>{{$trans_count}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                             
-                         </div>
-                    </div>
-                </div>
-                
-                   @if(canSee('agents'))
-<div class="col-xl-4 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dash-widget-header">
-<span class="dash-widget-icon bg-1">
-<i class="fa fa-sitemap"></i>
-</span>
-                                <div class="dash-count">
-                                    <div class="dash-title">Total Agents</div>
-                                    <div class="dash-counts">
-                                        <p>{{$agent}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                             
-                         </div>
-                    </div>
-                </div>
-                
-                
-<div class="col-xl-4 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dash-widget-header">
-<span class="dash-widget-icon bg-3">
-<i class="fa fa-fax"></i>
-</span>
-                                <div class="dash-count">
-                                    <div class="dash-title">Total Terminals</div>
-                                    <div class="dash-counts">
-                                        <p>{{$terminals}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                             
-                         </div>
-                    </div>
-                </div>
-                
-                
-<div class="col-xl-4 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dash-widget-header">
-<span class="dash-widget-icon bg-info">
-<i class="fa fa-gift"></i>
-</span>
-                                <div class="dash-count">
-                                    <div class="dash-title">Total Float <small>(Sub Agents)</small></div>
-                                    <div class="dash-counts">
-                                        <p>{{$agentfloat}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                             
-                         </div>
-                    </div>
-                </div>
-
-                    @endif
-            </div>
+<div class="col-lg-6 col-sm-6 col-12 d-flex">
+<div class="dash-count das1">
+<div class="dash-counts">
+<h4>{{$customer}}</h4>
+<h5>Total Customers</h5>
+</div>
+<div class="dash-imgs">
+<i data-feather="user-check"></i>
+</div>
+</div>
+</div>
+<div class="col-lg-6 col-sm-6 col-12 d-flex">
+<div class="dash-count das2">
+<div class="dash-counts">
+<h4>{{$trans_count}}</h4>
+<h5>Transaction Count</h5>
+</div>
+<div class="dash-imgs">
+<i data-feather="file-text"></i>
+</div>
+</div>
+</div>
+@if(canSee('agents'))
+<div class="col-lg-6 col-sm-6 col-12 d-flex">
+<div class="dash-count das4">
+<div class="dash-counts">
+<h4>{{$terminals}}</h4>
+<h5>Teminals</h5>
+</div>
+<div class="dash-imgs">
+<i data-feather="printer"></i>
+</div>
+</div>
+</div>
 
 
-            <div class="col-xl-12 col-sm-12 col-12">
+<div class="col-lg-6 col-sm-6 col-12 d-flex">
+<div class="dash-count das3">
+<div class="dash-counts">
+<h4>{{$agentfloat}}</h4>
+<h5>Total Float <small>(Sub Agents)</small></h5>
+</div>
+<div class="dash-imgs">
+<i data-feather="file"></i>
+</div>
+</div>
+</div>
 
-<div id="columnchart_material" style="width: 100%; height: 500px;"></div>
+@endif
 
- </div>
-
-
-            <div class="card-body">
-                <form class="form" id="filter_form" method="get">
-                    <div class="row">
-
-                     
-                        <h5 class="text-secondary">Recent Transactions</h5>
-                        <!-- search -->
-                             
-                                <div class="card card-table">
-                                
-                                    <div class="card-body">
-                                    
-                    <div class="table-responsive">
-                    <br>
-                    <h6>Filter Transaction</h6>
-                    <div class="row">
+</div>
+<div class="row">
+<div class="col-lg-12 col-sm-12 col-12 d-flex">
+<div class="card flex-fill">
+<div class="card-header pb-0 d-flex justify-content-between align-items-center">
+<h5 class="card-title mb-0">Transaction Chart</h5>
+<div class="graph-sets">
+<ul>
+<li>
+<span>Credit</span>
+</li>
+<li>
+<span>Debit</span>
+</li>
+</ul>
+<div class="dropdown">
+<button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+ 2022 <img src="{{asset('components/img/icons/dropdown.svg')}}" alt="img" class="ms-2">
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<li>
+<a href="javascript:void(0);" class="dropdown-item">{{date('Y')}}</a>
+</li> 
+</ul>
+</div>
+</div>
+</div>
+<div class="card-body">
+<div id="sales_charts"></div>
+</div>
+</div>
+</div>
  
-                        <div class="col-xl-3 col-sm-6 col-12">
+</div>
+<div class="card mb-0">
+<div class="card-body">
+<h4 class="card-title">Recent Transaction</h4>
+
+<div class="table-responsive dataview">
+
+<form class="form" id="filter_form" method="get">
+                     
+                    <div class="row"> 
+                        <div class="col-xl-4 col-sm-6 col-12">
                             <label for="search"> From Date </label>
                             <div class="input-group">
                                 <input type="date" name="from" class="form-control" placeholder="search...">
-                                
                             </div>
                         </div>
  
                     
-                        <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="col-xl-4 col-sm-6 col-12">
                             <label for="search"> To Date </label>
                             <div class="input-group">
                                 <input type="date" name="to" class="form-control"  placeholder="search...">
-                                 
                             </div>
                         </div>
                     
-                        <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="col-xl-4 col-sm-6 col-12">
                         <label for="search"> Type </label>
                         <div class="input-group">
                            <select name="type" class="form-control">
@@ -213,22 +137,19 @@
                            <option value="Airtime">Airtime</option>
                            <option value="Cable TV">Cable TV</option>
                            <option value="Internet Data">Internet Data</option>
-                           </select>
-                             
+                           </select>                 
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
+                         </div>
+                     <div class="col-xl-4 col-sm-6 col-12">
                        <br>
                         <div class="input-group">
                         <button type="submit" class="btn btn-primary btn-sm">Filter Transaction</button>      
                         </div>
                     </div>
-                    <br> 
-                    <br> 
-                    <br> <br>
-                    <hr>
-                         </div>
-                                             <table id="example"  class="table table-center table-hover">
+                    </form>
+
+
+<table id="example"  class="table table-center table-hover">
                                                 <thead class="thead-light">
                                                 <tr>
                                                     <th>S/N</th>
@@ -266,22 +187,16 @@
 
                                                 </tbody>
                                             </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+</div>
+</div>
+</div>
+</div>
 
-  
-             
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
+
+     
+
+
+                 
 
 
 @endsection
@@ -299,6 +214,82 @@ $(document).ready(function() {
     } );
 } );
 </script>
+<script>
+'use strict';
 
+$(document).ready(function() {
+
+	function generateData(baseval, count, yrange) {
+		var i = 0;
+		var series = [];
+		while (i < count) {
+			var x = Math.floor(Math.random() * (750 - 1 + 1)) + 1;;
+			var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+			var z = Math.floor(Math.random() * (75 - 15 + 1)) + 15;
+
+			series.push([x, y, z]);
+			baseval += 86400000;
+			i++;
+		}
+		return series;
+	}
+
+ 
+if($('#sales_charts').length > 0) {
+	var options = {
+		series: [{
+		name: 'Sales',
+		data: [{{$cjan}}, {{$cfeb}}, {{$cmar}}, {{$capr}}, {{$cmay}}, {{$cjun}}, {{$cjul}}, {{$caug}},{{$csep}},{{$coct}},{{$cnov}},{{$cdec}} ],
+	  }, {
+		name: 'Purchase',
+		data: [{{$djan}}, {{$dfeb}}, {{$dmar}}, {{$dapr}}, {{$dmay}}, {{$djun}}, {{$djul}}, {{$daug}},{{$dsep}},{{$doct}},{{$dnov}},{{$ddec}}]
+	  }],
+	  colors: ['#28C76F', '#EA5455'],
+		chart: {
+		type: 'bar',
+		height: 300,
+		stacked: true,
+		
+		zoom: {
+		  enabled: true
+		}
+	  },
+	  responsive: [{
+		breakpoint: 280,
+		options: {
+		  legend: {
+			position: 'bottom',
+			offsetY: 0
+		  }
+		}
+	  }],
+	  plotOptions: {
+		bar: {
+		  horizontal: false,
+		  columnWidth: '20%',
+		  endingShape: 'rounded'
+		},
+	  },
+	  xaxis: {
+		categories: [' JAN ', 'FEB', 'MAR', 'APR',
+		  'MAY', 'JUN' , 'JUL' , 'AUG','SEP','OCT','NOV','DEC'
+		],
+	  },
+	  legend: {
+		position: 'right',
+		offsetY: 40
+	  },
+	  fill: {
+		opacity: 1
+	  }
+	  };
+
+	  var chart = new ApexCharts(document.querySelector("#sales_charts"), options);
+	  chart.render();
+	}
+
+  
+});
+</script>
 
 @endpush

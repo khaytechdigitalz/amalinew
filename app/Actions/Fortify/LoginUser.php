@@ -121,14 +121,14 @@ class LoginUser
     "identifier": "'.$request->phone.'",
     "hash": "'.$hash.'"
 }';
-
+        /*
         echo "=====BASE URL=====";
         echo env('GRUPPLOGIN_BASEURL'). '/extension/auth';
         echo "=====Payload=====";
         echo $payload;
 
         echo "=====Response=====";
-
+        */
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -157,7 +157,7 @@ class LoginUser
 
 //        dd($response);
 
-        if($resp['status']){
+        if(@$resp['status']){
 
             $u=User::create([
                 'firstname' => "",

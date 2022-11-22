@@ -1,66 +1,57 @@
 @extends('layouts.sidebar')
 
-@section('styles')
-    <link rel="stylesheet" href="{{asset('assets/plugins/datatables/datatables.min.css')}}">
-@endsection
 
 @section('content')
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-
-            <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3 class="page-title">Terminals</h3>
-                        < 
-                    </div>
-                </div>
-            </div>
-            <ul class="breadcrumb">
-                                    <li class=""><a href="{{url('dashboard')}}">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Terminals</li>
-                                </ul>
 
 
-            <div class="row">
-                <div class="col-sm-12">
-                                    @if (session('status'))
-                                        <div class="mb-4 font-medium text-sm text-green-600 alert-dismissible alert">
-                                            {{ session('status') }}
-                                        </div>
-                                    @endif
+<div class="card">
+<div class="card-body">
+<div class="table-top">
+<div class="search-set">
+<div class="search-path">
+<a class="btn btn-filter" id="filter_search">
+<img src="{{asset('components/img/icons/filter.svg')}}" alt="img">
+<span><img src="{{asset('components/img/icons/closes.svg')}}" alt="img"></span>
+</a>
+</div>
+<div class="search-input">
+<a class="btn btn-searchset"><img src="{{asset('components/img/icons/search-white.svg')}}" alt="img"></a>
+</div>
+</div>
+<div class="wordset">
+<ul>
+<li>
+<a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf"><img src="{{asset('components/img/icons/pdf.svg')}}" alt="img"></a>
+</li>
+<li>
+<a data-bs-toggle="tooltip" data-bs-placement="top" title="excel"><img src="{{asset('components/img/icons/excel.svg')}}" alt="img"></a>
+</li>
+<li>
+<a data-bs-toggle="tooltip" data-bs-placement="top" title="print"><img src="{{asset('components/img/icons/printer.svg')}}" alt="img"></a>
+</li>
+</ul>
+</div>
+</div> 
 
-                                    @if (session('error'))
-                                        <div class="mb-4 font-medium text-sm alert-danger alert-dismissible alert">
-                                            {{ session('error') }}
-                                        </div>
-                                    @endif
+<div class="table-responsive">
+<table class="table  datanew">
+<thead>
+<tr>
+<th>
+</th> <tr>
+  <th>SN</th>
+ <th>Terminal ID</th>
+  <th>Serial Number</th>
+  <th>Sub Agent Assigned</th>
+ <th>Status</th>
+  <th>Date</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+@foreach($datas as $data)
+<tr>
 
-                                    @if (session('success'))
-                                        <div class="mb-4 font-medium text-sm alert-success alert-dismissible alert">
-                                            {{ session('success') }}
-                                        </div>
-                                    @endif
-
-
-                    <div class="card card-table">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-center table-hover datatable">
-                                    <thead class="thead-light">
-                                    <tr>
-                                        <th>SN</th>
-                                        <th>Terminal ID</th>
-                                        <th>Serial Number</th>
-                                        <th>Sub Agent Assigned</th>
-                                        <th>Status</th>
-                                        <th>Date</th>
-                                        <th class="text-right">Actions</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($datas as $data)
-                                        <tr>
                                             <td>
                                                 {{$i++}}
                                             </td>
@@ -76,23 +67,22 @@
 
                                             </td>
                                             <td>
-                                                @if($data->status == 1)
-                                                    <span class="badge badge-primary"> Active </span>
-                                                @else
-                                                    <span class="badge badge-danger"> Not Active</span>
-                                                @endif
+                                            @if($data->status == 1)
+                                                    <badge class="badge bg-success">Active</badge>
+                                                    @else
+                                                    <badge class="badge bg-danger">Not Active</badge>
+                                                    @endif
                                             </td>
                                             <td>
                                                 {{$data->created_at}}
                                             </td>
-                                            <td class="text-right ">
-                                                <button  data-toggle="modal" data-target="#myModal{{$data->id}}" class="btn btn-sm btn-primary">Assign</button>
+<td>
+<button  data-bs-toggle="modal" data-bs-target="#myModal{{$data->id}}" class="btn btn-sm btn-primary">Assign</button>
                                                 @if($data->status == 1)
-                                                    <a class="btn btn-primary" href="{{route('terminalsTransaction', $data->id)}}">View Transactions</a>
+                                                    <a class="btn btn-sm btn-primary" href="{{route('terminalsTransaction', $data->id)}}">View Transactions</a>
                                                 @endif
-                                            </td>
-                                        </tr>
-
+</td>
+</tr>
 
 <!-- The Modal -->
 <div class="modal" id="myModal{{$data->id}}">
@@ -133,7 +123,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Assign</button>
       </div>
     </form>
@@ -142,32 +132,15 @@
   </div>
 </div>
 <!-- END MODAL-->
-
-                                    @endforeach
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+@endforeach
+</tbody>
+</table>
+</div>
+</div>
+</div>
+   
 @endsection
 
 @section('scripts')
-    <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/moment/moment.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-
-    <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/datatables.min.js')}}"></script>
-
-    <script src="{{asset('assets/js/script.js')}}"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+   
 @endsection
