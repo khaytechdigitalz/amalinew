@@ -1,7 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('content')
-    
+
                 <div class="col-md-6 mt-4 mb-3">
                     <a href="{{url('add-customer')}}" class="btn btn-primary btn-block" role="button"><i
                             class="fa fa-plus-circle"> </i> Open New Account</a>
@@ -31,7 +31,7 @@
                                                 {{$user->email}}
                                             </td>
                                             <td>
-                                                {{$user->phoneno}}
+                                                {{$user->phone}}
                                             </td>
                                               <td>
                                                 {{$user->accountName}}
@@ -44,10 +44,10 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div> 
+                        </div>
 
 
 @endsection
 
-@section('scripts') 
+@section('scripts')
 @endsection

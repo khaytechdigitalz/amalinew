@@ -7,6 +7,7 @@ use App\Models\Customer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class CustomersController extends Controller
@@ -36,10 +37,22 @@ class CustomersController extends Controller
         }
 
         try {
+            $vfd=new VFDController();
+            $auth = $vfd->auth_init2();
+            $token = $auth['access_token'];
+
+            if (env('VFD_MODE') == 0) {
+                $baseurl = env('VFD_URL_TEST');
+                $wc = env('VFD_AUTH_TEST');
+            } else {
+                $baseurl = env('VFD_URL');
+                $wc = env('VFD_AUTH');
+            }
+
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
-                CURLOPT_URL => env('VFDC_URL') . 'agency-bank/verify',
+                CURLOPT_URL => $baseurl . "vtech-wallet/api/v1/wallet2/client/create?wallet-credentials=".$wc."&bvn=" . $input['bvn'] . "&dateOfBirth=" . Carbon::parse($input['dob'])->format('d-M-Y'),
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
@@ -55,18 +68,20 @@ class CustomersController extends Controller
                 }',
                             CURLOPT_HTTPHEADER => array(
                     'Content-Type: application/json',
-                    'Authorization: Bearer ' . env('VFDC_TOKEN'),
+                    'Authorization: Bearer ' .$token,
                 ),
             ));
 
             $response = curl_exec($curl);
 
             curl_close($curl);
-//            return $response;
+
+            Log::info("Create Customer Account URL: ".$baseurl . "vtech-wallet/api/v1/wallet2/client/create?wallet-credentials=".$wc."&bvn=" . $input['bvn'] . "&dateOfBirth=" . Carbon::parse($input['dob'])->format('d-M-Y'));
+            Log::info("Create Customer Account: $response");
 
             $rep = json_decode($response, true);
 
-            if ($rep['status'] != "success") {
+            if ($rep['status'] != "00") {
                 return back()->withInput()->with('error', 'An error occurred. ' . $rep['message']);
             }
 
@@ -76,7 +91,19 @@ class CustomersController extends Controller
 
         session(['input' => $input]);
 
-        return redirect()->route('addCustomerOTP')->with('success', 'OTP has been sent to customer phone');
+//        return redirect()->route('addCustomerOTP')->with('success', 'OTP has been sent to customer phone');
+
+        $data['bvn'] = $input['bvn'];
+        $data['phone'] = $input['phone'];
+        $data['email'] = $input['email'];
+        $data['accountNo'] = $rep['data']['accountNo'];
+        $data['accountName'] = $rep['data']['lastname'] ." ".$rep['data']['firstname'] ." ".$rep['data']['middlename'];
+        $data['created_by'] = Auth::id();
+        $data['creator_uuid'] = Auth::user()->uuid;
+
+        Customer::create($data);
+
+        return redirect()->route('customers')->with('success', 'Customer created successfully');
 
     }
 

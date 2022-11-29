@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class VFDController extends Controller
@@ -440,6 +441,47 @@ class VFDController extends Controller
         $response = curl_exec($curl);
 
         curl_close($curl);
+
+        Log::info("VFD Login: $response");
+        return json_decode($response, true);
+
+    }
+
+    public function auth_init2()
+    {
+        if (env('VFD_MODE') == 0) {
+            $auth = env('VFD_AUTH_TEST');
+            $baseurl = env('VFD_URL_TEST');
+        } else {
+            $auth = env('VFD_AUTH');
+            $baseurl = env('VFD_URL');
+        }
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $baseurl . 'v-token/v1/oauth2/token',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => 'grant_type=client_credentials',
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Basic ' . $auth,
+                'Content-Type: application/x-www-form-urlencoded'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+
+        Log::info("VFD Login URL: $baseurl . 'v-token/v1/oauth2/token'");
+        Log::info("VFD Login: $response");
         return json_decode($response, true);
 
     }
