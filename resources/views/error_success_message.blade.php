@@ -7,11 +7,11 @@
     </div>
 @endif
 
-@if (session('error'))
-    <div class="mb-4 font-medium text-sm alert-danger alert-dismissible alert">
-        {{ session('error') }}
-    </div>
-@endif
+{{--@if (session('error'))--}}
+{{--    <div class="mb-4 font-medium text-sm alert-danger alert-dismissible alert">--}}
+{{--        {{ session('error') }}--}}
+{{--    </div>--}}
+{{--@endif--}}
 
 @if (session('success'))
     <div class="mb-4 font-medium text-sm alert-success alert-dismissible alert">
